@@ -1,9 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const Card = ({ visaCard, handleSeeDetails }) => {
+const Card = ({ visaCard }) => {
   return (
     <div
-      onClick={() => handleSeeDetails(visaCard)}
+      onClick={() => handleSeeDetails(visaCard._id)}
       className="card bg-base-100 lg:w-96 md:w-80 shadow-xl">
       <figure>
         <img src={visaCard.country_image} alt={visaCard.country_name} />
@@ -30,7 +31,11 @@ const Card = ({ visaCard, handleSeeDetails }) => {
         <div className="badge badge-primary"> {visaCard.validity}</div>
 
         <div className="card-actions justify-end">
-          <button className="btn btn-primary">See Details</button>
+          <Link
+            to={`/visa-details/${visaCard._id}`}
+            className="btn btn-primary">
+            See Details
+          </Link>
         </div>
       </div>
     </div>
