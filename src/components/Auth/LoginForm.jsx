@@ -1,9 +1,10 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { AuthContext } from "../../providers/AuthProvider";
 
-export default function LoginForm({ onLogin }) {
+export default function LoginForm(loginForm) {
+  const nextPath = loginForm.loginForm;
   const [login, setLogin] = useState(true);
   const [password, setPassword] = useState("");
   const [passwordError, setPasswordError] = useState("");
@@ -14,7 +15,9 @@ export default function LoginForm({ onLogin }) {
   const [showPassword, setShowPassword] = useState(false);
 
   //collect from useContext
-  const { googleSignIn } = useContext(AuthContext);
+  const { googleSignIn, signInUser, createAccount, user } =
+    useContext(AuthContext);
+  const navigate = useNavigate();
 
   const togglePasswordVisibility = () => setShowPassword(!showPassword);
 
@@ -44,24 +47,46 @@ export default function LoginForm({ onLogin }) {
     }
   };
 
-  const handleSignupSubmit = (e) => {
+  const handleSignupSubmit = async (e) => {
     e.preventDefault();
     console.info("Signup button clicked");
     const email = e.target.email.value;
     const name = e.target.name.value;
     const photoUrl = e.target.photoUrl.value;
     const password = e.target.password.value;
-    console.log({ email, name, photoUrl, password });
-    // ...existing code...
+
+    try {
+      const user = await createAccount(email, password, name, photoUrl);
+      navigate(nextPath); // Navigate to home after successful signup
+    } catch (error) {
+      console.error("Signup error: ", error);
+    }
   };
 
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
     console.info("Login button clicked");
-    // ...existing login logic...
-    const loginSuccessful = true; // Replace with actual login success condition
-    if (loginSuccessful) {
-      onLogin(true);
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+
+    try {
+      await signInUser(email, password);
+      navigate(nextPath); // Navigate to home after successful login
+    } catch (error) {
+      console.error("Login error: ", error);
+    }
+  };
+
+  const handleGoogleSignIn = async () => {
+    try {
+      await googleSignIn(nextPath);
+      console.info("Google Signin success: ", user);
+      if (user) {
+        console.info("Google Signin success: user? ", user);
+        navigate(nextPath); // Navigate to home after successful login
+      }
+    } catch (error) {
+      console.error("Google Signin error: ", error);
     }
   };
 
@@ -147,15 +172,19 @@ export default function LoginForm({ onLogin }) {
               <p className="text-center">or</p>
             </form>
             <div className="form-control ">
-              <button className="btn btn-secondary" onClick={googleSignIn}>
+              <button
+                className="btn btn-secondary"
+                onClick={handleGoogleSignIn}>
                 Sign up with Google
               </button>
             </div>
             <p className="text-center py-2">
               Already Have Account?{" "}
-              <button className="text-blue-400" onClick={() => setLogin(true)}>
+              <span
+                className="text-blue-400 cursor-pointer"
+                onClick={() => setLogin(true)}>
                 Login
-              </button>
+              </span>
             </p>
           </div>
         </div>
@@ -217,17 +246,19 @@ export default function LoginForm({ onLogin }) {
               </div>
               <p className="text-center">or</p>
               <div className="form-control ">
-                <button className="btn btn-secondary" onClick={googleSignIn}>
+                <button
+                  className="btn btn-secondary"
+                  onClick={handleGoogleSignIn}>
                   Login with Google
                 </button>
               </div>
               <p className="text-center py-2">
                 Don't have an account?{" "}
-                <button
-                  className="text-blue-400"
+                <span
+                  className="text-blue-400 cursor-pointer"
                   onClick={() => setLogin(false)}>
                   Sign up
-                </button>
+                </span>
               </p>
             </form>
           </div>
