@@ -4,12 +4,11 @@ import { Link } from "react-router-dom";
 const Card = ({ visaCard }) => {
   return (
     <div
-      onClick={() => handleSeeDetails(visaCard._id)}
-      className="card bg-base-100 lg:w-96 md:w-80 shadow-xl">
+      className="card bg-base-100 lg:w-64 md:w-80 shadow-xl outline-0">
       <figure>
-        <img src={visaCard.country_image} alt={visaCard.country_name} />
+        <img className="w-64 h-48 object-cover" src={visaCard.country_image} alt={visaCard.country_name} />
       </figure>
-      <div className="card-body">
+      <div className="card-body p-2 gap-0">
         <h2 className="card-title">
           {visaCard.country_name}
           {visaCard.application_method === "Online" ? (

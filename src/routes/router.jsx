@@ -31,7 +31,7 @@ const router = createBrowserRouter([
         element: <UpdateVisa />,
         loader: async ({ params }) => {
           const response = await fetch(
-            `https://backend-tau-vert-85.vercel.app/visas/id/${params.id}`
+            `http://localhost:5000/visas/id/${params.id}`
           );
           return response.json();
         },
@@ -70,7 +70,7 @@ const router = createBrowserRouter([
         element: <UpdateVisa />,
         loader: async ({ params }) => {
           const response = await fetch(
-            `https://backend-tau-vert-85.vercel.app/visas/id/${params.id}`
+            `http://localhost:5000/visas/id/${params.id}`
           );
           return response.json();
         },

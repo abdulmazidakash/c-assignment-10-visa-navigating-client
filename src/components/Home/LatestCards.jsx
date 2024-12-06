@@ -8,7 +8,7 @@ const LatestCards = () => {
   const [visaCards, setVisaCards] = useState([]);
 
   useEffect(() => {
-    fetch("https://backend-tau-vert-85.vercel.app/latestCards")
+    fetch("http://localhost:5000/latestCards")
       .then((res) => res.json())
       .then((data) => {
         setVisaCards(data);
@@ -22,9 +22,7 @@ const LatestCards = () => {
         <span style={{ color: "" }}>
           <Typewriter
             words={[
-              "Latest Visa Cards",
-              "See the Latest Updates",
-              "Explore New Visa Options",
+              "Latest Visa Cards"
             ]}
             loop={true} // Infinite loop
             cursor

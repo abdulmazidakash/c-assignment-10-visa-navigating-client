@@ -21,7 +21,7 @@ const CardWithModal = ({ item, fetchData }) => {
   const handleUpdate = (e) => {
     e.preventDefault();
 
-    fetch(`https://backend-tau-vert-85.vercel.app/visas/updateVisa${_id}`, {
+    fetch(`http://localhost:5000/visas/updateVisa${_id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -67,7 +67,7 @@ const CardWithModal = ({ item, fetchData }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://backend-tau-vert-85.vercel.app/visas/delete/${id}`, {
+        fetch(`http://localhost:5000/visas/delete/${id}`, {
           method: "DELETE",
         })
           .then((response) => response.json())

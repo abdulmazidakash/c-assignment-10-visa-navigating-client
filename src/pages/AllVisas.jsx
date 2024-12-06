@@ -7,7 +7,7 @@ const AllVisas = () => {
   useEffect(() => {
     const fetchVisas = async () => {
       const response = await fetch(
-        "https://backend-tau-vert-85.vercel.app/visas"
+        "http://localhost:5000/visas"
       );
       const data = await response.json();
       setVisas(data);
@@ -21,7 +21,7 @@ const AllVisas = () => {
 
   return (
     <div className="flex flex-col my-5 items-center justify-center">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mx-auto w-11/12">
         {visas.map((visa) => (
           <Card
             key={visa._id}
