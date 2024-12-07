@@ -21,7 +21,7 @@ const UserIcon = ({ user }) => {
             {/* Tooltip configuration */}
           </div>
         </div>
-        <p>Logout</p>
+        <p className="text-white">Logout</p>
         {/* <FiLogOut className="w-10" /> */}
       </button>
     </div>

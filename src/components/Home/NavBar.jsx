@@ -21,14 +21,14 @@ const NavBar = () => {
     <li
       key="home"
       className={`font-roboto font-medium ${
-        theme === "dark" ? "text-white" : "text-black"
+        theme === "dark" ? "text-white" : "text-white"
       }`}>
       <Link to="/">Home</Link>
     </li>,
     <li
       key="allvisas"
       className={`font-roboto font-medium ${
-        theme === "dark" ? "text-white" : "text-black"
+        theme === "dark" ? "text-white" : "text-white"
       }`}>
       <Link to="/allvisas">All Visas</Link>
     </li>,
@@ -36,21 +36,21 @@ const NavBar = () => {
     <li
       key="addVisa"
       className={`font-roboto font-medium ${
-        theme === "dark" ? "text-white" : "text-black"
+        theme === "dark" ? "text-white" : "text-white"
       }`}>
       <Link to="/addVisa">Add Visa</Link>
     </li>,
     <li
       key="myAddedVisa"
       className={`font-roboto font-medium ${
-        theme === "dark" ? "text-white" : "text-black"
+        theme === "dark" ? "text-white" : "text-white"
       }`}>
       <Link to="/myAddedVisa">My Added Visa</Link>
     </li>,
     <li
       key="myVisaApplication"
       className={`font-roboto font-medium ${
-        theme === "dark" ? "text-white" : "text-black"
+        theme === "dark" ? "text-white" : "text-white"
       }`}>
       <Link to="/myVisaApplication">My Visa Application</Link>
     </li>,
@@ -58,7 +58,7 @@ const NavBar = () => {
       <li
         key="profilePage"
         className={`font-roboto font-medium ${
-          theme === "dark" ? "text-white" : "text-black"
+          theme === "dark" ? "text-white" : "text-white"
         }`}>
         <Link to="/profilePage">Profile</Link>
       </li>
@@ -67,7 +67,7 @@ const NavBar = () => {
 
   return (
     <div>
-      <div className="navbar bg-base-100 shadow p-3">
+      <div className="navbar bg-gradient-to-t from-rose-600 to-gray-900 shadow p-3">
         <div className="block md:hidden ">
           <div className="dropdown lg:hidden">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -92,24 +92,24 @@ const NavBar = () => {
             </ul>
           </div>
         </div>
-        <div className="navbar-start">
-          <Link to="/" className="btn btn-ghost text-xl">
-            VisaEase
+        <div className="navbar-start text-white text-2xl">
+          <Link to="/" className="btn btn-ghost  text-white">
+            GlobalVisaHub
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{items}</ul>
         </div>
         <div className="navbar-end">
-          <button onClick={toggleTheme} className="btn btn-ghost rounded-full">
+          <button onClick={toggleTheme} className="btn btn-ghost rounded-full text-white">
             {theme === "dark" ? <FaSun /> : <FaMoon />}
           </button>
           {user ? (
-            <button onClick={signOutUser} className="btn btn-ghost">
+            <button onClick={signOutUser} className="btn btn-ghost text-white">
               <UserIcon user={user} />
             </button>
           ) : (
-            <Link to="/authPage" className="btn">
+            <Link to="/authPage" className="btn text-white">
               Login
             </Link>
           )}
