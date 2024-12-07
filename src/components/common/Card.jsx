@@ -29,10 +29,10 @@ const Card = ({ visaCard }) => {
         <p>Fee: ${visaCard.fee}</p>
         <div className="badge badge-primary"> {visaCard.validity}</div>
 
-        <div className="card-actions justify-end">
+        <div className="card-actions justify-end text-white">
           <Link
             to={`/visa-details/${visaCard._id}`}
-            className="btn btn-primary">
+            className="btn bg-gradient-to-tr from-rose-500 to-gray-800 text-white">
             See Details
           </Link>
         </div>

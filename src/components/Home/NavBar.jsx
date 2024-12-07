@@ -20,14 +20,14 @@ const NavBar = () => {
   const items = [
     <li
       key="home"
-      className={`font-roboto font-medium ${
+      className={` font-medium ${
         theme === "dark" ? "text-white" : "text-white"
       }`}>
       <Link to="/">Home</Link>
     </li>,
     <li
       key="allvisas"
-      className={`font-roboto font-medium ${
+      className={` font-medium ${
         theme === "dark" ? "text-white" : "text-white"
       }`}>
       <Link to="/allvisas">All Visas</Link>
@@ -35,21 +35,21 @@ const NavBar = () => {
 
     <li
       key="addVisa"
-      className={`font-roboto font-medium ${
+      className={` font-medium ${
         theme === "dark" ? "text-white" : "text-white"
       }`}>
       <Link to="/addVisa">Add Visa</Link>
     </li>,
     <li
       key="myAddedVisa"
-      className={`font-roboto font-medium ${
+      className={` font-medium ${
         theme === "dark" ? "text-white" : "text-white"
       }`}>
       <Link to="/myAddedVisa">My Added Visa</Link>
     </li>,
     <li
       key="myVisaApplication"
-      className={`font-roboto font-medium ${
+      className={` font-medium ${
         theme === "dark" ? "text-white" : "text-white"
       }`}>
       <Link to="/myVisaApplication">My Visa Application</Link>
@@ -57,7 +57,7 @@ const NavBar = () => {
     user && (
       <li
         key="profilePage"
-        className={`font-roboto font-medium ${
+        className={` font-medium ${
           theme === "dark" ? "text-white" : "text-white"
         }`}>
         <Link to="/profilePage">Profile</Link>
@@ -102,7 +102,7 @@ const NavBar = () => {
         </div>
         <div className="navbar-end">
           <button onClick={toggleTheme} className="btn btn-ghost rounded-full text-white">
-            {theme === "dark" ? <FaSun /> : <FaMoon />}
+            {theme === "dark" ? <FaSun className="text-white" /> : <FaMoon className="text-white" />}
           </button>
           {user ? (
             <button onClick={signOutUser} className="btn btn-ghost text-white">
