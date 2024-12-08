@@ -1,11 +1,12 @@
+
 import React, { useContext, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../providers/AuthProvider";
 
 const UpdateVisa = () => {
-  const { user } = useContext(AuthContext);
-  const data = useLoaderData();
+  const { user } = useContext(AuthContext); // User authentication context থেকে ইউজারের তথ্য নিয়ে আসা
+  const data = useLoaderData(); // Loader থেকে ভিসা ডেটা নিয়ে আসা
   const {
     id,
     country_name,
@@ -21,12 +22,12 @@ const UpdateVisa = () => {
     email,
   } = data;
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false); // মডাল কন্ট্রোল
   const [formData, setFormData] = useState({
     email: email,
     firstName: "",
     lastName: "",
-    appliedDate: new Date().toISOString().split("T")[0],
+    appliedDate: new Date().toISOString().split("T")[0], // বর্তমান তারিখ সেট করা
     fee: fee,
   });
 
@@ -50,26 +51,30 @@ const UpdateVisa = () => {
       applicant_name: fullName,
       applicant_email: user.email,
     };
-    console.log(visaData);
 
     try {
-      const response = await fetch(
-        "http://localhost:5000/applyVisa",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(visaData),
-        }
-      );
+      // সার্ভারে ভিসার আবেদন পাঠানো
+      const response = await fetch("http://localhost:5000/applyVisa", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(visaData),
+      });
       const result = await response.json();
+      
       if (result.status === "ok") {
         Swal.fire({
           title: "Success!",
           text: "Your visa application has been submitted successfully.",
           icon: "success",
           confirmButtonText: "OK",
+        });
+        setFormData({
+          firstName: "",
+          lastName: "",
+          appliedDate: new Date().toISOString().split("T")[0],
+          fee: fee,
         });
       } else {
         Swal.fire({
@@ -88,56 +93,43 @@ const UpdateVisa = () => {
       });
     }
 
-    setIsModalOpen(false);
+    setIsModalOpen(false); // মডাল বন্ধ করা
   };
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100 p-4">
       <div className="card w-full max-w-md bg-white shadow-xl">
         <figure>
-          <img
-            src={country_image}
-            alt={country_name}
-            className="w-full h-auto"
-          />
+          <img src={country_image} alt={country_name} className="w-full h-auto" />
         </figure>
         <div className="card-body">
           <h2 className="card-title text-xl md:text-2xl">{country_name}</h2>
           <p className="text-gray-700 text-sm md:text-base">{description}</p>
           <div className="badge badge-primary">{visa_type}</div>
-          <div className="badge badge-secondary">
-            Processing Time: {processing_time}
-          </div>
+          <div className="badge badge-secondary">Processing Time: {processing_time}</div>
           <div className="badge badge-accent">Fee: ${fee}</div>
           <div className="badge badge-info">Validity: {validity}</div>
-          <div className="badge badge-warning">
-            Age Restriction: {age_restriction}+
-          </div>
-          <div className="badge badge-success">
-            Application Method: {application_method}
-          </div>
+          <div className="badge badge-warning">Age Restriction: {age_restriction}+ </div>
+          <div className="badge badge-success">Application Method: {application_method}</div>
           <div className="mt-4">
-            <h3 className="font-bold text-sm md:text-base">
-              Required Documents:
-            </h3>
+            <h3 className="font-bold text-sm md:text-base">Required Documents:</h3>
             <ul className="list-disc list-inside text-sm md:text-base">
-              {required_documents.map((doc, index) => (
-                <li key={index}>{doc}</li>
-              ))}
+              {required_documents && Array.isArray(required_documents) && required_documents.length > 0
+                ? required_documents.map((doc, index) => <li key={index}>{doc}</li>)
+                : "No documents available"}
             </ul>
           </div>
           <div className="mt-4">
             <h3 className="font-bold text-sm md:text-base">Contact:</h3>
             <p className="text-sm md:text-base">{email}</p>
           </div>
-          <button
-            className="btn btn-primary mt-4"
-            onClick={() => setIsModalOpen(true)}>
+          <button className="btn btn-primary mt-4" onClick={() => setIsModalOpen(true)}>
             Apply for the visa
           </button>
         </div>
       </div>
 
+      {/* Modal for applying */}
       {isModalOpen && (
         <div className="modal modal-open">
           <div className="modal-box">
@@ -194,13 +186,12 @@ const UpdateVisa = () => {
                 />
               </div>
               <div className="modal-action">
-                <button type="submit" className="btn btn-primary">
-                  Apply
-                </button>
+                <button type="submit" className="btn btn-primary">Apply</button>
                 <button
                   type="button"
                   className="btn"
-                  onClick={() => setIsModalOpen(false)}>
+                  onClick={() => setIsModalOpen(false)}
+                >
                   Cancel
                 </button>
               </div>

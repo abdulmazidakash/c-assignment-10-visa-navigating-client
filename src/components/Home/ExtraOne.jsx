@@ -3,12 +3,12 @@ import React from "react";
 const ExtraOne = () => {
   return (
     <div>
-      <div className="p-6 bg-base-100 rounded-lg shadow-lg card my-4">
+      <div className="p-6 bg-base-100 rounded-lg shadow-lg card my-4 w-11/12 mx-auto">
         {/* Welcome Section */}
-        <h2 className="text-2xl font-bold mb-4 text-primary card-title">
+        <h2 className="text-2xl font-bold mb-4 text-info text-center">
           What You Need?
         </h2>
-        <p className="text-base-content">
+        <p className="text-base-content text-center w-7/12 mx-auto">
           Welcome to the{" "}
           <strong>Electronic Visa Applications Forms Instructions Page</strong>.
           Forms available on this page can be filled out online to assist in
@@ -92,7 +92,7 @@ const ExtraOne = () => {
 
         {/* CTA Section */}
         <div className="mt-6 text-center">
-          <button className="btn btn-primary">
+          <button className="btn btn-info">
             Start Your Visa Application
           </button>
         </div>

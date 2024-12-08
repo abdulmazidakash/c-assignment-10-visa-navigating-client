@@ -1,13 +1,13 @@
 import React from "react";
 
-const VisaCard = ({ visaCard, handleSeeDetails }) => {
+const VisaCard = ({ visaCard}) => {
   return (
     <div>
       <div
         onClick={() => handleSeeDetails(visaCard._id)}
         className="card bg-base-100 lg:w-96 md:w-80 shadow-xl">
         <figure>
-          <img src={visaCard.country_image} alt={visaCard.country_name} />
+          <img className="" src={visaCard.country_image} alt={visaCard.country_name} />
         </figure>
         <div className="card-body">
           <h2 className="card-title">

@@ -4,7 +4,7 @@ const ContactUs = () => {
   return (
     <div>
       <div className="p-6 bg-base-100 rounded-lg shadow-lg card my-4 w-11/12 mx-auto">
-        <h2 className="text-2xl font-bold mb-4 text-primary  text-center">
+        <h2 className="text-2xl font-bold mb-4 text-info text-center ">
           Contact Us
         </h2>
         <p className="text-base-content mb-4 text-center">
@@ -41,7 +41,7 @@ const ContactUs = () => {
               className="textarea textarea-bordered w-full"></textarea>
           </div>
           <div className="text-center">
-            <button type="submit" className="btn bg-gradient-to-tr from-rose-700 to-slate-900 text-white">
+            <button type="submit" className="btn btn-info text-white">
               Send Message
             </button>
           </div>
