@@ -39,11 +39,11 @@ const AllVisas = () => {
 
   return (
     <div className="flex flex-col my-5 items-center justify-center">
-      <h1 className="text-3xl font-bold text-blue-500 mb-5">All Visas</h1>
+      <h1 className="text-3xl font-bold text-info mb-5">All Visas</h1>
 
       {/* Filter Section */}
       <div className="flex flex-row items-center justify-between w-11/12 mb-5">
-        <label className="text-blue-500 text-lg font-semibold">Select a visa type:</label>
+        <label className="text-info text-lg font-semibold">Select a visa type:</label>
         <select
           value={filter}
           onChange={(e) => setFilter(e.target.value)}
@@ -56,7 +56,7 @@ const AllVisas = () => {
       </div>
 
       {/* Visa Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mx-auto w-11/12">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 mx-auto w-11/12">
         {filteredVisas.map((visa) => (
           <Card
             key={visa._id}

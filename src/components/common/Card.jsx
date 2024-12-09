@@ -7,7 +7,7 @@ const Card = ({ visaCard }) => {
     <div className="card bg-base-100 lg:w-72 md:w-80 shadow-xl outline-0">
       <figure>
         <img
-          className="w-64 h-48 object-cover"
+          className="w-full h-48 object-cover  rounded-b-lg"
           src={visaCard.country_image}
           alt={visaCard.country_name}
         />

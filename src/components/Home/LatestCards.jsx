@@ -1,5 +1,3 @@
-
-
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Card from "../common/Card";
@@ -40,7 +38,7 @@ const LatestCards = () => {
       </h1>
 
       {/* Visa Cards Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 mx-auto w-11/12 mb-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 mx-auto w-11/12 mb-4 mt-4">
         {visaCards.map((visa) => (
           <Card key={visa._id} visaCard={visa} />
         ))}
