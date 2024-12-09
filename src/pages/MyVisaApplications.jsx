@@ -1,13 +1,14 @@
-
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "tailwindcss/tailwind.css";
 import "daisyui/dist/full.css";
 import { AuthContext } from "../providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const MyVisaApplications = () => {
   const [applications, setApplications] = useState([]);
   const { user } = useContext(AuthContext);
   const userEmail = user?.email || "";
+  console.log(applications);
 
   // Fetch user's visa applications when userEmail is available
   useEffect(() => {
@@ -19,30 +20,36 @@ const MyVisaApplications = () => {
     }
   }, [userEmail]);
 
-  // Delete Visa handler
-  const handleCancel = (id) => {
-    console.log("Deleting visa with ID:", id);
 
-    fetch(`http://localhost:5000/deleteVisa/${id}`, {
-      method: "DELETE",
-    })
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error(`Failed to delete. Status: ${response.status}`);
-        }
-      })
-      .then((data) => {
-        console.log("Deleted successfully:", data);
-        setApplications((prevApplications) =>
-          prevApplications.filter((app) => app._id !== id)
-        );
-      })
-      .catch((error) => {
-        console.error("Error deleting visa:", error);
-      });
+  const handleDelete = (_id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/deleteVisa/${_id}?email=${user.email}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.acknowledged) {
+              Swal.fire("Deleted!", "Your visa has been deleted.", "success");
+              const remaining = applications.filter((app) => app._id !== _id);
+              setApplications(remaining);
+            } else {
+              Swal.fire("Error!", data.message, "error");
+            }
+          })
+          .catch((error) => console.error("Error deleting visa:", error));
+      }
+    });
   };
+  
 
   return (
     <div className="container mx-auto p-4">
@@ -54,12 +61,12 @@ const MyVisaApplications = () => {
               <figure>
                 <img
                   src={app.country_image}
-                  alt={app.country_name}
+                  alt={app.country}
                   className="w-full h-48 object-cover"
                 />
               </figure>
               <div className="card-body">
-                <h2 className="card-title">{app.country_name}</h2>
+                <h2 className="card-title">{app.country}</h2>
                 <div className="badge badge-primary mb-2">{app.visa_type}</div>
                 <p>Processing Time: {app.processing_time} days</p>
                 <p>Fee: ${app.fee}</p>
@@ -76,7 +83,7 @@ const MyVisaApplications = () => {
                 <div className="card-actions justify-end">
                   <button
                     className="btn btn-error"
-                    onClick={() => handleCancel(app._id)}
+                    onClick={()=> handleDelete(app._id)}
                   >
                     Cancel
                   </button>
@@ -93,5 +100,3 @@ const MyVisaApplications = () => {
 };
 
 export default MyVisaApplications;
-
-
