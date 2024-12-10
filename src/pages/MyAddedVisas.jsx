@@ -9,7 +9,11 @@ const MyAddedVisas = () => {
   const fetchData = async () => {
     try {
       const response = await fetch(
-        `http://localhost:5000/visas/email/${user.email}`
+        // `http://localhost:5000/visas/apply/email/${user.email}`
+        // 'http://localhost:5000/visas'
+        'http://localhost:5000/applyVisa'
+  
+
       );
       const data = await response.json();
       setVisas(data);
@@ -27,7 +31,13 @@ const MyAddedVisas = () => {
       {/* <h1>My Added Visas sddd</h1> */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mx-auto">
         {visas.map((visa) => (
-          <CardWithModal key={visa._id} item={visa} fetchData={fetchData} />
+          <CardWithModal 
+          key={visa._id} 
+          item={visa} 
+          fetchData={fetchData} 
+          />
+
+
         ))}
       </div>
     </div>

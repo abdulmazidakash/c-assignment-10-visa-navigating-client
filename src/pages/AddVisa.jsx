@@ -4,6 +4,7 @@ import Swal from "sweetalert2"; // Ensure this import is correct
 
 const AddVisa = () => {
   const { user } = useContext(AuthContext);
+  // console.log(user);
   const [formData, setFormData] = useState({
     country_image: "",
     country_name: "",
@@ -16,6 +17,7 @@ const AddVisa = () => {
     validity: "",
     application_method: "",
   });
+ 
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -81,6 +83,7 @@ const AddVisa = () => {
         console.error(err);
       });
   };
+  
 
   return (
     <div className="flex  justify-center items-center min-h-screen bg-gray-100">
