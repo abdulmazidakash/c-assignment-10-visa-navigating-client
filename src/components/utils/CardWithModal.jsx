@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 
 const CardWithModal = ({ item, fetchData }) => {
   const { _id } = item;
+  // console.log(_id);
   const [showModal, setShowModal] = useState(false);
   const [formData, setFormData] = useState({
     country_name: item.country_name,
@@ -67,31 +68,31 @@ const CardWithModal = ({ item, fetchData }) => {
   };
 
   // Delete Visa
-  const handleDelete = (id) => {
-    Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        fetch(`http://localhost:5000/visas/delete/${id}`, {
-          method: "DELETE",
-        })
-          .then((response) => response.json())
-          .then((data) => {
-            if (data.deletedCount > 0) {
-              Swal.fire("Deleted!", "Your Visa Info has been deleted.", "success");
-              fetchData();
-            }
-          })
-          .catch(() => Swal.fire("Error!", "An error occurred.", "error"));
-      }
-    });
-  };
+  // const handleDelete = (id) => {
+  //   Swal.fire({
+  //     title: "Are you sure?",
+  //     text: "You won't be able to revert this!",
+  //     icon: "warning",
+  //     showCancelButton: true,
+  //     confirmButtonColor: "#3085d6",
+  //     cancelButtonColor: "#d33",
+  //     confirmButtonText: "Yes, delete it!",
+  //   }).then((result) => {
+  //     if (result.isConfirmed) {
+  //       fetch(`http://localhost:5000/visas/delete/${id}`, {
+  //         method: "DELETE",
+  //       })
+  //         .then((response) => response.json())
+  //         .then((data) => {
+  //           if (data.deletedCount > 0) {
+  //             Swal.fire("Deleted!", "Your Visa Info has been deleted.", "success");
+  //             fetchData();
+  //           }
+  //         })
+  //         .catch(() => Swal.fire("Error!", "An error occurred.", "error"));
+  //     }
+  //   });
+  // };
 
   return (
     <div className="card w-96 bg-base-100 shadow-xl">

@@ -4,27 +4,27 @@ import CardWithModal from "../components/utils/CardWithModal";
 
 const MyAddedVisas = () => {
   const { user } = useContext(AuthContext);
+  console.log(user);
   const [visas, setVisas] = useState([]);
+  console.log(visas);
+
+
+  useEffect(()=>{
+    fetchData()
+  } , [])
+
 
   const fetchData = async () => {
-    try {
-      const response = await fetch(
-        // `http://localhost:5000/visas/apply/email/${user.email}`
-        // 'http://localhost:5000/visas'
-        'http://localhost:5000/applyVisa'
-  
-
-      );
-      const data = await response.json();
-      setVisas(data);
-    } catch (error) {
-      // console.error(error);
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, [user.email]);
+      try {
+        const response = await fetch(
+          `http://localhost:5000/visas/${user?.email}`
+        );
+        const data = await response.json();
+        setVisas(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
 
   return (
     <div className="flex items-center justify-center py-5">
