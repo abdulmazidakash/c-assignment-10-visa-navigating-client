@@ -3,9 +3,12 @@ import React, { useState } from "react";
 import Swal from "sweetalert2";
 
 const CardWithModal = ({ item, fetchData }) => {
+
+  console.log(item);
   const { _id } = item;
   // console.log(_id);
   const [showModal, setShowModal] = useState(false);
+  const [visas, setVisas] = useState([])
   const [formData, setFormData] = useState({
     country_name: item.country_name,
     visa_type: item.visa_type,
@@ -16,29 +19,29 @@ const CardWithModal = ({ item, fetchData }) => {
   });
 
   // Apply for Visa ফাংশন
-  const handleApplyForVisa = () => {
-    const applicationData = {
-      country_name: item.country_name,
-      visa_type: item.visa_type,
-      fee: item.fee,
-      appliedDate: new Date().toISOString(),
-    };
+  // const handleApplyForVisa = () => {
+  //   const applicationData = {
+  //     country_name: item.country_name,
+  //     visa_type: item.visa_type,
+  //     fee: item.fee,
+  //     appliedDate: new Date().toISOString(),
+  //   };
 
-    fetch("http://localhost:5000/myVisaApplications", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(applicationData),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.insertedId) {
-          Swal.fire("Applied!", "Your Visa Application has been submitted.", "success");
-        } else {
-          Swal.fire("Error!", "Failed to submit Visa Application.", "error");
-        }
-      })
-      .catch(() => Swal.fire("Error!", "An error occurred.", "error"));
-  };
+  //   fetch("http://localhost:5000/myVisaApplications", {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify(applicationData),
+  //   })
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       if (data.insertedId) {
+  //         Swal.fire("Applied!", "Your Visa Application has been submitted.", "success");
+  //       } else {
+  //         Swal.fire("Error!", "Failed to submit Visa Application.", "error");
+  //       }
+  //     })
+  //     .catch(() => Swal.fire("Error!", "An error occurred.", "error"));
+  // };
 
   // Input Change Handler
   const handleInputChange = (e) => {
@@ -93,6 +96,53 @@ const CardWithModal = ({ item, fetchData }) => {
   //     }
   //   });
   // };
+
+  const handleDelete = async id =>{
+    console.log(id);
+    // try{
+    //   const { data } = await axios.delete(
+    //     `${import.meta.env.VITE_API_URL}/job/${id}`
+    //   )
+    //   console.log(data);
+    //   toast.success('Data deleted successfully !!!')
+    //   fetchAllJobs()
+    // }catch(err){
+    //   console.log(err);
+    //   toast.error(err.message)
+    // }
+
+    Swal.fire({
+			title: "Are you sure?",
+			text: "You won't be able to revert this!",
+			icon: "warning",
+			showCancelButton: true,
+			confirmButtonColor: "#3085d6",
+			cancelButtonColor: "#d33",
+			confirmButtonText: "Yes, delete it!"
+		  }).then((result) => {
+			if (result.isConfirmed) {
+	
+
+				fetch(`http://localhost:5000/visa/${id}`,{
+					method: 'DELETE'
+				})
+					.then(res => res.json())
+					.then(data =>{
+						console.log(data)
+						if(data.deletedCount > 0){
+						  Swal.fire({
+								title: "Deleted!",
+								text: "Your coffee has been deleted.",
+								icon: "success"
+							  });
+
+							fetchData();
+						}
+					})
+			}
+
+		  });
+  }
 
   return (
     <div className="card w-96 bg-base-100 shadow-xl">
