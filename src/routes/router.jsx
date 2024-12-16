@@ -33,7 +33,7 @@ const router = createBrowserRouter([
         </PrivateProvider>,
         loader: async ({ params }) => {
           const response = await fetch(
-            `http://localhost:5000/visas/id/${params.id}`
+            `https://assignment-10-visa-server.vercel.app/visas/id/${params.id}`
           );
           return response.json();
         },
@@ -72,7 +72,7 @@ const router = createBrowserRouter([
         element: <UpdateVisa />,
         loader: async ({ params }) => {
           const response = await fetch(
-            `http://localhost:5000/visas/id/${params.id}`
+            `https://assignment-10-visa-server.vercel.app/visas/id/${params.id}`
           );
           return response.json();
         },

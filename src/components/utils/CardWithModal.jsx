@@ -27,7 +27,7 @@ const CardWithModal = ({ item, fetchData }) => {
   // Update Visa
   const handleUpdate = (e) => {
     e.preventDefault();
-    fetch(`http://localhost:5000/update-visa/${_id}`, {
+    fetch(`https://assignment-10-visa-server.vercel.app/update-visa/${_id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
@@ -58,7 +58,7 @@ const CardWithModal = ({ item, fetchData }) => {
 			if (result.isConfirmed) {
 	
 
-				fetch(`http://localhost:5000/visa/${id}`,{
+				fetch(`https://assignment-10-visa-server.vercel.app/visa/${id}`,{
 					method: 'DELETE'
 				})
 					.then(res => res.json())

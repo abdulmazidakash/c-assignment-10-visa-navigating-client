@@ -54,7 +54,7 @@ const UpdateVisa = () => {
 
     try {
       
-      const response = await fetch("http://localhost:5000/applyVisa", {
+      const response = await fetch("https://assignment-10-visa-server.vercel.app/applyVisa", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

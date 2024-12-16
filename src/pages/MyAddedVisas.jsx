@@ -17,7 +17,7 @@ const MyAddedVisas = () => {
   const fetchData = async () => {
       try {
         const response = await fetch(
-          `http://localhost:5000/visas/${user?.email}`
+          `https://assignment-10-visa-server.vercel.app/visas/${user?.email}`
         );
         const data = await response.json();
         setVisas(data);

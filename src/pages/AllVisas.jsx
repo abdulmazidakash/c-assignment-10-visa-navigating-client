@@ -11,7 +11,7 @@ const AllVisas = () => {
   useEffect(() => {
     const fetchVisas = async () => {
       try {
-        const response = await fetch("http://localhost:5000/visas");
+        const response = await fetch("https://assignment-10-visa-server.vercel.app/visas");
         const data = await response.json();
         setVisas(data);
         setFilteredVisas(data); // Initialize filtered visas

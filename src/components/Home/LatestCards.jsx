@@ -9,7 +9,7 @@ const LatestCards = () => {
 
   // Fetch the latest visa cards
   useEffect(() => {
-    fetch("http://localhost:5000/latestCards")
+    fetch("https://assignment-10-visa-server.vercel.app/latestCards")
       .then((res) => res.json())
       .then((data) => {
         setVisaCards(data);
