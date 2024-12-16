@@ -1,3 +1,4 @@
+
 import { useContext, useEffect, useState } from "react";
 import "tailwindcss/tailwind.css";
 import "daisyui/dist/full.css";
@@ -5,22 +6,26 @@ import { AuthContext } from "../providers/AuthProvider";
 import Swal from "sweetalert2";
 
 const MyVisaApplications = () => {
-  const [applications, setApplications] = useState([]);
+  const [applications, setApplications] = useState([]); 
+  const [filteredApplications, setFilteredApplications] = useState([]); 
+  const [searchTerm, setSearchTerm] = useState(""); 
   const { user } = useContext(AuthContext);
   const userEmail = user?.email || "";
-  console.log(applications);
 
-  // Fetch user's visa applications when userEmail is available
+  // Fetch user's visa applications
   useEffect(() => {
     if (userEmail) {
       fetch(`http://localhost:5000/visas/apply/email/${userEmail}`)
         .then((response) => response.json())
-        .then((data) => setApplications(data))
+        .then((data) => {
+          setApplications(data);
+          setFilteredApplications(data); 
+        })
         .catch((error) => console.error("Error fetching visa applications:", error));
     }
   }, [userEmail]);
 
-
+  // Delete Visa Function
   const handleDelete = (_id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -41,6 +46,7 @@ const MyVisaApplications = () => {
               Swal.fire("Deleted!", "Your visa has been deleted.", "success");
               const remaining = applications.filter((app) => app._id !== _id);
               setApplications(remaining);
+              setFilteredApplications(remaining);
             } else {
               Swal.fire("Error!", data.message, "error");
             }
@@ -49,14 +55,38 @@ const MyVisaApplications = () => {
       }
     });
   };
-  
+
+  // Search Filter Logic
+  const handleSearch = () => {
+    const filtered = applications.filter((app) =>
+      app.country.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setFilteredApplications(filtered);
+  };
 
   return (
     <div className="container mx-auto p-4">
+      {/* Title */}
       <h1 className="text-2xl font-bold mb-4">My Visa Applications</h1>
+
+      {/* Search Bar */}
+      <div className="flex mb-6 gap-2">
+        <input
+          type="text"
+          placeholder="Search by country name"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)} 
+          className="input input-bordered w-full max-w-xs"
+        />
+        <button className="btn btn-primary" onClick={handleSearch}>
+          Search
+        </button>
+      </div>
+
+      {/* Visa Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {applications.length > 0 ? (
-          applications.map((app) => (
+        {filteredApplications.length > 0 ? (
+          filteredApplications.map((app) => (
             <div key={app._id} className="card shadow-lg compact bg-base-100">
               <figure>
                 <img
@@ -83,7 +113,7 @@ const MyVisaApplications = () => {
                 <div className="card-actions justify-end">
                   <button
                     className="btn btn-error"
-                    onClick={()=> handleDelete(app._id)}
+                    onClick={() => handleDelete(app._id)}
                   >
                     Cancel
                   </button>
@@ -100,3 +130,4 @@ const MyVisaApplications = () => {
 };
 
 export default MyVisaApplications;
+

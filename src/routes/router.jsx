@@ -28,7 +28,9 @@ const router = createBrowserRouter([
       },
       {
         path: "/visa-details/:id",
-        element: <UpdateVisa />,
+        element: <PrivateProvider>
+          <UpdateVisa />
+        </PrivateProvider>,
         loader: async ({ params }) => {
           const response = await fetch(
             `http://localhost:5000/visas/id/${params.id}`

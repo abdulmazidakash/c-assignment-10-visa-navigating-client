@@ -5,8 +5,8 @@ import Swal from "sweetalert2";
 import { AuthContext } from "../providers/AuthProvider";
 
 const UpdateVisa = () => {
-  const { user } = useContext(AuthContext); // User authentication context থেকে ইউজারের তথ্য নিয়ে আসা
-  const data = useLoaderData(); // Loader থেকে ভিসা ডেটা নিয়ে আসা
+  const { user } = useContext(AuthContext); 
+  const data = useLoaderData(); 
   const {
     id,
     country_name,
@@ -22,12 +22,12 @@ const UpdateVisa = () => {
     email,
   } = data;
 
-  const [isModalOpen, setIsModalOpen] = useState(false); // মডাল কন্ট্রোল
+  const [isModalOpen, setIsModalOpen] = useState(false); 
   const [formData, setFormData] = useState({
     email: email,
     firstName: "",
     lastName: "",
-    appliedDate: new Date().toISOString().split("T")[0], // বর্তমান তারিখ সেট করা
+    appliedDate: new Date().toISOString().split("T")[0], 
     fee: fee,
   });
 
@@ -53,7 +53,7 @@ const UpdateVisa = () => {
     };
 
     try {
-      // সার্ভারে ভিসার আবেদন পাঠানো
+      
       const response = await fetch("http://localhost:5000/applyVisa", {
         method: "POST",
         headers: {
@@ -94,7 +94,7 @@ const UpdateVisa = () => {
       });
     }
 
-    setIsModalOpen(false); // মডাল বন্ধ করা
+    setIsModalOpen(false);
   };
 
   return (
@@ -141,7 +141,7 @@ const UpdateVisa = () => {
                 <input
                   type="email"
                   name="email"
-                  value={user.email}
+                  value={user?.email}
                   readOnly
                   className="input input-bordered"
                 />

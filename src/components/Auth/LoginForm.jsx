@@ -80,13 +80,22 @@ export default function LoginForm(loginForm) {
   const handleGoogleSignIn = async () => {
     try {
       await googleSignIn(nextPath);
-      console.info("Google Signin success: ", user);
-      if (user) {
-        console.info("Google Signin success: user? ", user);
-        navigate(nextPath); // Navigate to home after successful login
-      }
+      navigate(nextPath); 
+      Swal.fire({
+        title: "Success!",
+        text: "You have successfully signed in with Google.",
+        icon: "success",
+        confirmButtonText: "OK",
+      });
+  
     } catch (error) {
       console.error("Google Signin error: ", error);
+      Swal.fire({
+        title: "Error!",
+        text: error.message || "Google Sign-In failed! Please try again.",
+        icon: "error",
+        confirmButtonText: "OK",
+      });
     }
   };
 

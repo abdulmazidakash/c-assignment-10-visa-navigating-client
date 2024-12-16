@@ -18,31 +18,6 @@ const CardWithModal = ({ item, fetchData }) => {
     application_method: item.application_method,
   });
 
-  // Apply for Visa ফাংশন
-  // const handleApplyForVisa = () => {
-  //   const applicationData = {
-  //     country_name: item.country_name,
-  //     visa_type: item.visa_type,
-  //     fee: item.fee,
-  //     appliedDate: new Date().toISOString(),
-  //   };
-
-  //   fetch("http://localhost:5000/myVisaApplications", {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify(applicationData),
-  //   })
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       if (data.insertedId) {
-  //         Swal.fire("Applied!", "Your Visa Application has been submitted.", "success");
-  //       } else {
-  //         Swal.fire("Error!", "Failed to submit Visa Application.", "error");
-  //       }
-  //     })
-  //     .catch(() => Swal.fire("Error!", "An error occurred.", "error"));
-  // };
-
   // Input Change Handler
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -109,17 +84,13 @@ const CardWithModal = ({ item, fetchData }) => {
         <img className="w-full h-52 object-cover" src={item.country_image} alt={item.country_name} />
       </figure>
       <div className="card-body">
-        <h2 className="card-title">{item.country}</h2>
+        <h2 className="card-title">{item.country_name}</h2>
         <p>Visa Type: {item.visa_type}</p>
         <p>Processing Time: {item.processing_time} days</p>
         <p>Fee: ${item.fee}</p>
         <p>Validity: {item.validity} days</p>
         <p>Application Method: {item.application_method}</p>
         <div className="card-actions justify-end">
-          {/* Apply for Visa Button */}
-          {/* <button className="btn btn-success" onClick={handleApplyForVisa}>
-            Apply for Visa
-          </button> */}
 
           {/* Update Button */}
           <button className="btn btn-primary" onClick={() => setShowModal(true)}>
