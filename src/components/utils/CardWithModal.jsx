@@ -52,7 +52,7 @@ const CardWithModal = ({ item, fetchData }) => {
   // Update Visa
   const handleUpdate = (e) => {
     e.preventDefault();
-    fetch(`http://localhost:5000/visas/updateVisa/${_id}`, {
+    fetch(`http://localhost:5000/update-visa/${_id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
@@ -70,47 +70,7 @@ const CardWithModal = ({ item, fetchData }) => {
     setShowModal(false);
   };
 
-  // Delete Visa
-  // const handleDelete = (id) => {
-  //   Swal.fire({
-  //     title: "Are you sure?",
-  //     text: "You won't be able to revert this!",
-  //     icon: "warning",
-  //     showCancelButton: true,
-  //     confirmButtonColor: "#3085d6",
-  //     cancelButtonColor: "#d33",
-  //     confirmButtonText: "Yes, delete it!",
-  //   }).then((result) => {
-  //     if (result.isConfirmed) {
-  //       fetch(`http://localhost:5000/visas/delete/${id}`, {
-  //         method: "DELETE",
-  //       })
-  //         .then((response) => response.json())
-  //         .then((data) => {
-  //           if (data.deletedCount > 0) {
-  //             Swal.fire("Deleted!", "Your Visa Info has been deleted.", "success");
-  //             fetchData();
-  //           }
-  //         })
-  //         .catch(() => Swal.fire("Error!", "An error occurred.", "error"));
-  //     }
-  //   });
-  // };
-
   const handleDelete = async id =>{
-    console.log(id);
-    // try{
-    //   const { data } = await axios.delete(
-    //     `${import.meta.env.VITE_API_URL}/job/${id}`
-    //   )
-    //   console.log(data);
-    //   toast.success('Data deleted successfully !!!')
-    //   fetchAllJobs()
-    // }catch(err){
-    //   console.log(err);
-    //   toast.error(err.message)
-    // }
-
     Swal.fire({
 			title: "Are you sure?",
 			text: "You won't be able to revert this!",
@@ -140,7 +100,6 @@ const CardWithModal = ({ item, fetchData }) => {
 						}
 					})
 			}
-
 		  });
   }
 
