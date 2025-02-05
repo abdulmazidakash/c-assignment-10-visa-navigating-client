@@ -1,15 +1,37 @@
+<!--1. project banner image -->
+## 🌟 GlobalVisaHub 🚀
+
 ![App Screenshot](https://i.ibb.co.com/Z6fLkkMD/global-visa-hub.jpg)
 
-# GlobalVisaHub
+<!--2. project overview -->
 
 A user-friendly Global Visa Hub platform that simplifies the process of exploring, applying, and managing visa applications.
 
-## Live Site URL
+---
+
+<!--3. live project links and other relevant resources -->
+
+## 🌐 Live Demo
 [Visit the Website](https://assignment-10-global-visa-hub-akash.netlify.app/)
 
 ---
 
-## Features
+<!--4. main technologies used list -->
+
+## ‍💻 Technologies Used
+
+- **Frontend**: React.js, Tailwind CSS, DaisyUI
+- **Backend**: Node.js, Express.js
+- **Database**: MongoDB
+- **Authentication**: Firebase Authentication
+- **Styling Framework**: Tailwind CSS with DaisyUI components
+- **Notifications**: SweetAlert2 for user-friendly alerts
+
+---
+
+<!--5. core features of the project -->
+
+## ✨ Key Features
 
 1. **Browse All Visas**: 
    - Explore visas from different countries with detailed information such as visa type, processing time, required documents, fees, and more.
@@ -37,20 +59,16 @@ A user-friendly Global Visa Hub platform that simplifies the process of explorin
 
 ---
 
-## Technologies Used
+<!--
+6. mention the dependencies used list &
+7. step by step guide on how to run the project locally
+ -->
 
-- **Frontend**: React.js, Tailwind CSS, DaisyUI
-- **Backend**: Node.js, Express.js
-- **Database**: MongoDB
-- **Authentication**: Firebase Authentication
-- **Styling Framework**: Tailwind CSS with DaisyUI components
-- **Notifications**: SweetAlert2 for user-friendly alerts
+# 🚀 Full Stack Project Setup Guide  
 
-Here's a detailed README including dependencies and a step-by-step guide for running the project locally using **npm**.
+This guide will help you set up and run both the **frontend** and **backend** of your project locally using **npm**.  
 
----
-
-# 🚀 Project Setup Guide  
+---  
 
 ## 📦 Dependencies  
 
@@ -103,8 +121,8 @@ Ensure you have the following installed:
 ### **2️⃣ Clone the Repository**  
 If you haven't cloned the project yet, run:  
 ```sh
-git clone <repository_url>
-cd <project_folder>
+git clone https://github.com/abdulmazidakash/c-assignment-10-visa-navigating-client.git
+cd c-assignment-10-visa-navigating-client
 ```
 
 ### **3️⃣ Install Dependencies**  
