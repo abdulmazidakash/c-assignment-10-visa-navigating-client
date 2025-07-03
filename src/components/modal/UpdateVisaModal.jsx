@@ -2,7 +2,7 @@ export default function UpdateVisaModal({handleUpdate, setShowModal, formData, h
   return (
 	<div className="modal modal-open">
       <div className="modal-box">
-        <h3 className="font-bold text-lg">Update Visa Information</h3>
+        <h3 className="font-bold text-lg text-center">Update Visa Information</h3>
         <form onSubmit={handleUpdate}>
           {["country_name", "visa_type", "processing_time", "fee", "validity", "application_method"].map((field) => (
             <div key={field} className="mb-4">

@@ -1,10 +1,12 @@
 
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../providers/AuthProvider";
+import ApplyVisaModal from "../components/modal/ApplyVisaModal";
 
-const UpdateVisa = () => {
+const VisaDetails = () => {
+  
   const { user } = useContext(AuthContext); 
   const data = useLoaderData(); 
   const {
@@ -129,83 +131,20 @@ const UpdateVisa = () => {
           </button>
         </div>
       </div>
-
-      {/* Modal for applying */}
+      {/* Apply Visa Modal */}
       {isModalOpen && (
-        <div className="modal modal-open">
-          <div className="modal-box">
-            <h3 className="font-bold text-lg">Apply for the Visa</h3>
-            <form onSubmit={handleSubmit}>
-              <div className="form-control">
-                <label className="label">Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  value={user?.email}
-                  readOnly
-                  className="input input-bordered"
-                />
-              </div>
-              <div className="form-control">
-                <label className="label">First Name</label>
-                <input
-                  type="text"
-                  name="firstName"
-                  value={formData.firstName}
-                  onChange={handleInputChange}
-                  className="input input-bordered"
-                />
-              </div>
-              <div className="form-control">
-                <label className="label">Last Name</label>
-                <input
-                  type="text"
-                  name="lastName"
-                  value={formData.lastName}
-                  onChange={handleInputChange}
-                  className="input input-bordered"
-                />
-              </div>
-              <div className="form-control">
-                <label className="label">Applied Date</label>
-                <input
-                  type="date"
-                  name="appliedDate"
-                  value={formData.appliedDate}
-                  readOnly
-                  className="input input-bordered"
-                />
-              </div>
-              <div className="form-control">
-                <label className="label">Fee</label>
-                <input
-                  type="text"
-                  name="fee"
-                  value={formData.fee}
-                  readOnly
-                  className="input input-bordered"
-                />
-              </div>
-              <div className="modal-action">
-                <button type="submit" className="btn btn-primary">
-                  Apply
-                </button>
-                <button
-                  type="button"
-                  className="btn"
-                  onClick={() => setIsModalOpen(false)}
-                >
-                  Cancel
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
+        <ApplyVisaModal
+        setIsModalOpen={setIsModalOpen}
+        handleInputChange={handleInputChange}
+        handleSubmit={handleSubmit}
+        formData={formData}
+        user={user}
+        />
       )}
     </div>
   );
 };
 
-export default UpdateVisa;
+export default VisaDetails;
 
 

@@ -1,5 +1,4 @@
 import { createBrowserRouter } from "react-router-dom";
-import Root from "../pages/MainLayout.jsx";
 import MainLayout from "../pages/MainLayout.jsx";
 import Home from "../pages/Home.jsx";
 import LoginPage from "../pages/LoginPage.jsx";
@@ -11,7 +10,7 @@ import AddVisa from "../pages/AddVisa.jsx";
 import MyAddedVisas from "../pages/MyAddedVisas.jsx";
 import MyVisaApplications from "../pages/MyVisaApplications.jsx";
 import AllVisas from "../pages/AllVisas.jsx";
-import UpdateVisa from "../pages/UpdateVisa.jsx";
+import VisaDetails from "../pages/VisaDetails.jsx";
 
 const router = createBrowserRouter([
   {
@@ -29,7 +28,7 @@ const router = createBrowserRouter([
       {
         path: "/visa-details/:id",
         element: <PrivateProvider>
-          <UpdateVisa />
+          <VisaDetails/>
         </PrivateProvider>,
         loader: async ({ params }) => {
           const response = await fetch(
@@ -69,7 +68,7 @@ const router = createBrowserRouter([
       },
       {
         path: "updateVisa/:id",
-        element: <UpdateVisa />,
+        element: <VisaDetails/>,
         loader: async ({ params }) => {
           const response = await fetch(
             `https://assignment-10-visa-server.vercel.app/visas/id/${params.id}`

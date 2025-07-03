@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import { useState } from "react";
 import Swal from "sweetalert2";
 import UpdateVisaModal from "../modal/UpdateVisaModal";
 
@@ -9,7 +9,6 @@ const CardWithModal = ({ item, fetchData }) => {
   const { _id } = item;
   // console.log(_id);
   const [showModal, setShowModal] = useState(false);
-  const [visas, setVisas] = useState([])
   const [formData, setFormData] = useState({
     country_name: item.country_name,
     visa_type: item.visa_type,
