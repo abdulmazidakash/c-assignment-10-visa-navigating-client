@@ -24,7 +24,7 @@ const LatestCards = () => {
   return (
     <div className="w-11/12 mx-auto flex justify-center items-center my-8 flex-col">
       {/* Animated Text Section */}
-      <h1 className="text-4xl font-bold my-4 text-orange-600">
+      <h1 className="text-4xl font-bold my-4 text-orange-500">
         <span>
           <Typewriter
             words={["Latest Visa Cards"]}

@@ -39,15 +39,15 @@ const AllVisas = () => {
 
   return (
     <div className="flex flex-col my-5 items-center justify-center">
-      <h1 className="text-3xl font-bold text-info mb-5">All Visas</h1>
+      <h1 className="text-3xl font-bold text-orange-500 mb-5">All Visas</h1>
 
       {/* Filter Section */}
       <div className="flex flex-row items-center justify-between w-11/12 mb-5">
-        <label className="text-info text-lg font-semibold">Select a visa type:</label>
+        <label className="text-orange-500 text-lg font-semibold">Select a visa type:</label>
         <select
           value={filter}
           onChange={(e) => setFilter(e.target.value)}
-          className="bg-gray-800 text-white px-3 py-2 rounded-lg font-semibold">
+          className="bg-orange-50 text-black dark:bg-gray-900 dark:text-white px-3 py-2 rounded-lg font-semibold">
           <option value="All Visas">All Visas</option>
           <option value="Tourist visa">Tourist Visa</option>
           <option value="Student visa">Student Visa</option>

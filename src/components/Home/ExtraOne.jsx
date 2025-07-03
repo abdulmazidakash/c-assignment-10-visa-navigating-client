@@ -3,9 +3,9 @@ import React from "react";
 const ExtraOne = () => {
   return (
     <div>
-      <div className="p-6 bg-base-100 rounded-lg shadow-lg card my-4 w-11/12 mx-auto">
+      <div className="p-6 bg-orange-50 rounded-lg shadow-lg card my-4 w-11/12 mx-auto">
         {/* Welcome Section */}
-        <h2 className="text-2xl font-bold mb-4 text-info text-center">
+        <h2 className="text-4xl font-bold mb-4 text-orange-500 text-center">
           What You Need?
         </h2>
         <p className="text-base-content text-center w-7/12 mx-auto">
@@ -92,7 +92,7 @@ const ExtraOne = () => {
 
         {/* CTA Section */}
         <div className="mt-6 text-center">
-          <button className="btn btn-info">
+          <button className="btn !bg-orange-500 !text-white font-semibold text-lg border-none !rounded-lg">
             Start Your Visa Application
           </button>
         </div>
