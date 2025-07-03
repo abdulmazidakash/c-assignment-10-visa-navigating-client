@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import UserIcon from "../common/UserIcon";
 import { FaSun, FaMoon } from "react-icons/fa";
+import { FaPassport } from "react-icons/fa6";
 
 const NavBar = () => {
   const { user, signOutUser } = useContext(AuthContext);
@@ -67,8 +68,9 @@ const NavBar = () => {
 
   return (
     <div>
-      <div className="navbar bg-gradient-to-t from-cyan-600 to-purple-700 shadow p-3">
-        <div className="block md:hidden ">
+      <div className="navbar bg-bgPrimary shadow p-3">
+        {/* small device navbar  */}
+        <div className="block md:hidden">
           <div className="dropdown lg:hidden">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
               <svg
@@ -87,19 +89,24 @@ const NavBar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[999] mt-3 w-52 p-2 shadow">
+              className="menu menu-sm dropdown-content bg-bgPrimary rounded-box z-[999] mt-3 w-52 p-2 shadow">
               {items}
             </ul>
           </div>
         </div>
-        <div className="navbar-start text-white text-2xl">
-          <Link to="/" className="btn btn-ghost  text-white">
-            GlobalVisaHub
+
+        {/* large device navbar  */}
+        <div className="navbar-start text-white md:block hidden">
+          <Link to="/" className="text-2xl font-bold flex items-center gap-2   text-white">
+           <FaPassport className="text-2xl" />
+           GlobalVisaHub
           </Link>
         </div>
+        {/* navbar center menu div  */}
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{items}</ul>
         </div>
+        {/* navbar end div  */}
         <div className="navbar-end">
           <button onClick={toggleTheme} className="btn btn-ghost rounded-full text-white">
             {theme === "dark" ? <FaSun className="text-white" /> : <FaMoon className="text-white" />}

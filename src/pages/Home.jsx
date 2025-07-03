@@ -1,5 +1,5 @@
 import React from "react";
-import SliderShow from "../components/Home/CoverflowSlider";
+import CoverflowSlider from "../components/Home/CoverflowSlider";
 import LatestCards from "../components/Home/LatestCards";
 import Footer from "./Footer";
 import ExtraOne from "../components/Home/ExtraOne";
@@ -9,7 +9,7 @@ const Home = () => {
   return (
     <div>
       <div className="w-11/12 mx-auto">
-        <SliderShow />
+        <CoverflowSlider />
         <LatestCards />
         <ExtraOne />
         <ContactUs />

@@ -4,15 +4,15 @@ import { EffectCoverflow, Pagination, Autoplay } from "swiper/modules"; // Impor
 import "swiper/swiper-bundle.css";
 
 const images = [
-  "https://i.ibb.co.com/8d9gQPd/banner-2.jpg",
-  "https://i.ibb.co.com/s1qP39c/banner-1.jpg",
-  "https://i.ibb.co.com/ZcHLX7J/banner-3.jpg",
+  "https://i.ibb.co/MyKbXbTH/australia.jpg",
+  "https://i.ibb.co/27MSbQtn/switzerland.jpg",
+  "https://i.ibb.co/0RFgVB5v/istanbul.jpg",
 
 ];
 
 function CoverflowSlider() {
   return (
-    <div className="w-full mx-auto my-8">
+    <div className="w-11/12 mx-auto my-8">
       {" "}
       {/* Set container to full width */}
       <Swiper
@@ -43,7 +43,7 @@ function CoverflowSlider() {
             <img
               src={src}
               alt={`Slide ${index + 1}`}
-              className="w-full h-96 object-cover rounded-lg" // Use relative units for height
+              className="w-full md:h-[480px] h-[400px] object-cover rounded-lg" // Use relative units for height
             />
           </SwiperSlide>
         ))}
