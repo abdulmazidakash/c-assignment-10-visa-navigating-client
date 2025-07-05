@@ -1,9 +1,9 @@
-import React, { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../../providers/AuthProvider";
-import UserIcon from "../common/UserIcon";
 import { FaSun, FaMoon } from "react-icons/fa";
 import { FaPassport } from "react-icons/fa6";
+import { AuthContext } from "../providers/AuthProvider";
+import UserIcon from "./common/UserIcon";
 
 const NavBar = () => {
   const { user, signOutUser } = useContext(AuthContext);

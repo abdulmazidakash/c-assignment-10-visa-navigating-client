@@ -1,7 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../pages/MainLayout.jsx";
 import Home from "../pages/Home.jsx";
-import PageNotFound from "../components/utils/PageNotFound.jsx";
 import MyProfile from "../pages/MyProfile.jsx";
 import PrivateProvider from "../providers/PrivateProvider.jsx";
 import AddVisa from "../pages/AddVisa.jsx";
@@ -11,6 +10,7 @@ import AllVisas from "../pages/AllVisas.jsx";
 import VisaDetails from "../pages/VisaDetails.jsx";
 import Login from "../components/Auth/login/Login.jsx";
 import Register from "../components/Auth/register/Register.jsx";
+import PageNotFound from "../components/PageNotFound.jsx";
 
 const router = createBrowserRouter([
   {
@@ -45,7 +45,7 @@ const router = createBrowserRouter([
         },
       },
       { path: "/myVisaApplication", element: (<PrivateProvider><MyVisaApplications /></PrivateProvider>)},
-      { path: "*", element: <PageNotFound />},
+      { path: "*", element: <PageNotFound/>},
     ],
   },
 ]);
