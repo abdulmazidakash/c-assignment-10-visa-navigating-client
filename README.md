@@ -1,7 +1,6 @@
 <!--1. project banner image -->
 ## 🌟 GlobalVisaHub 🚀
 
-![App Screenshot](https://i.ibb.co.com/Z6fLkkMD/global-visa-hub.jpg)
 
 <!--2. project overview -->
 
@@ -165,5 +164,9 @@ npm run preview
 
 ## 🎯 **You're All Set!**  
 Now you can start developing and testing the project locally. 🚀 
+
+# 🌍 Global Visa Hub
+
+![Global Visa Hub](src/assets/global-visa-hub.png)
 
 
