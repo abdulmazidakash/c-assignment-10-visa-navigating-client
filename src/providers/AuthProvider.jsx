@@ -11,7 +11,6 @@ import {
 } from "firebase/auth";
 import app from "../services/authService";
 import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext();
 

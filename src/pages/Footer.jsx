@@ -3,7 +3,7 @@ import React from "react";
 const Footer = () => {
   return (
     <div>
-      <footer className="footer bg-base-200 text-base-content p-10 flex  md:flex-row flex-col-reverse items-start md:items-center justify-around">
+      <footer className="footer bg-orange-200 text-base-content p-10 flex  md:flex-row flex-col-reverse items-start md:items-center justify-around">
         <nav>
           <h6 className="footer-title">Global Visa Hub</h6>
           <a className="link link-hover">Home</a>

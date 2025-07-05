@@ -116,7 +116,7 @@ const NavBar = () => {
               <UserIcon user={user} />
             </button>
           ) : (
-            <Link to="/authPage" className="btn text-white">
+            <Link to="/login" className="btn text-white">
               Login
             </Link>
           )}
