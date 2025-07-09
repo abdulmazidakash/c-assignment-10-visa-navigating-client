@@ -86,9 +86,9 @@ const AddVisa = () => {
   
 
   return (
-    <div className="flex  justify-center items-center min-h-screen bg-gray-100">
-      <div className="card w-full max-w-lg  my-4 shadow-lg bg-white p-6 rounded-lg">
-        <h1 className="text-2xl font-bold mb-4">Add Visa</h1>
+    <div className="w-11/12 mx-auto my-8">
+      <h1 className="text-3xl font-bold mb-6 text-center text-orange-500">My Visa Applications</h1>
+      <div className="card mx-auto w-full max-w-lg border border-gray-300 my-4 shadow-lg bg-orange-50 p-6 rounded-lg">
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label className="block text-sm font-medium mb-1">
@@ -249,7 +249,7 @@ const AddVisa = () => {
               <option value="Offline">Offline</option>
             </select>
           </div>
-          <button type="submit" className="btn btn-primary w-full">
+          <button type="submit" className="btn !bg-orange-500 !text-white w-full">
             Add Visa
           </button>
         </form>

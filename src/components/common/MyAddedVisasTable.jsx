@@ -101,7 +101,7 @@ const MyAddedVisasTable = ({ item, fetchData }) => {
         <td>{item.country_name}</td>
         {/* Visa Type Badge */}
         <td>
-          <span className={`badge-sm md:badge ${getBadgeColor(item.visa_type)} capitalize`}>
+          <span className={`badge ${getBadgeColor(item.visa_type)} capitalize`}>
             {item.visa_type}
           </span>
         </td>

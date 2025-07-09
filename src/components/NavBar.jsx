@@ -108,7 +108,7 @@ const NavBar = () => {
         </div>
         {/* navbar end div  */}
         <div className="navbar-end">
-          <button onClick={toggleTheme} className="btn btn-ghost btn-sm rounded-full text-white !shadow hover:!border-2 hover:!border-white">
+          <button onClick={toggleTheme} className="btn btn-ghost btn-sm rounded-lg text-white !shadow hover:!border-2 hover:!border-white">
             {theme === "dark" ? <FaSun className="text-white" /> : <FaMoon className="text-white" />}
           </button>
           {user ? (
@@ -116,7 +116,7 @@ const NavBar = () => {
               <UserIcon user={user} />
             </p>
           ) : (
-            <NavLink to="/login" className="btn btn-sm">
+            <NavLink to="/login" className="btn btn-sm ml-2">
               {" "}
               Login
             </NavLink>

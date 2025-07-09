@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const LatestCard = ({ visaCard }) => {
   return (
-    <div className="card bg-base-100 lg:w-96 md:w-80 shadow-xl">
+    <div className="card lg:w-96 md:w-80 shadow-xl">
       <figure>
         <img src={visaCard.country_image} alt={visaCard.country_name} />
       </figure>
@@ -22,7 +22,6 @@ const LatestCard = ({ visaCard }) => {
         </h2>
         <p>Visa Type: {visaCard.visa_type}</p>
         <p>Processing Time: {visaCard.processing_time}</p>
-        {/* <p>Required Documents: {visaCard.required_documents.join(", ")}</p> */}
         <p>Description: {visaCard.description}</p>
         <p>Age Restriction: {visaCard.age_restriction}</p>
         <p>Fee: ${visaCard.fee}</p>
