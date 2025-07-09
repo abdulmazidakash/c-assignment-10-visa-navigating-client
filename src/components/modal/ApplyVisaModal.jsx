@@ -2,7 +2,7 @@ export default function ApplyVisaModal({setIsModalOpen, handleInputChange, handl
   return (
 	<div className="modal modal-open">
 		<div className="modal-box">
-		<h3 className="font-bold text-lg text-center">Apply for the Visa</h3>
+		<h3 className="font-bold text-lg text-center text-orange-500">Apply for the Visa</h3>
 		<form onSubmit={handleSubmit}>
 			<div className="form-control">
 			<label className="label">Email</label>
@@ -55,7 +55,7 @@ export default function ApplyVisaModal({setIsModalOpen, handleInputChange, handl
 			/>
 			</div>
 			<div className="modal-action">
-			<button type="submit" className="btn btn-primary">
+			<button type="submit" className="btn !bg-orange-500 !text-white">
 				Apply
 			</button>
 			<button
