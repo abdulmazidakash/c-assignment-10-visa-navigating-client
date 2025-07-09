@@ -6,7 +6,7 @@ import { AuthContext } from "../providers/AuthProvider";
 import UserIcon from "./common/UserIcon";
 
 const NavBar = () => {
-  const { user, signOutUser } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const [theme, setTheme] = useState("dark");
 
   useEffect(() => {
@@ -21,7 +21,7 @@ const NavBar = () => {
           <li>
             <NavLink
               to={"/"}
-              className=""
+              className="shadow rounded-lg p-2 hover:border-2 hover:border-white"
             >
               {" "}
               Home
@@ -30,7 +30,7 @@ const NavBar = () => {
           <li>
             <NavLink
               to={"/allvisas"}
-              className=""
+              className="shadow rounded-lg p-2 hover:border-2 hover:border-white"
             >
               {" "}
               All Visas
@@ -40,7 +40,7 @@ const NavBar = () => {
           <li>
             <NavLink
               to={"/addVisa"}
-              className=""
+              className="shadow rounded-lg p-2 hover:border-2 hover:border-white"
             >
               {" "}
               Add Visa
@@ -49,7 +49,7 @@ const NavBar = () => {
           <li>
             <NavLink
               to={"/myAddedVisa"}
-              className=""
+              className="shadow rounded-lg p-2 hover:border-2 hover:border-white"
             >
               {" "}
               My Added Visa
@@ -58,23 +58,12 @@ const NavBar = () => {
           <li>
             <NavLink
               to={"/myVisaApplication"}
-              className=""
+              className="shadow rounded-lg p-2 hover:border-2 hover:border-white"
             >
               {" "}
               My Visa Application
             </NavLink>
-          </li>,
-        user && (
-          <li>
-            <NavLink
-              to={"/profilePage"}
-              className=""
-            >
-              {" "}
-              Profile
-            </NavLink>
           </li>
-    ),
   ];
 
   return (
@@ -115,17 +104,17 @@ const NavBar = () => {
         </div>
         {/* navbar center menu div  */}
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1 font-semibold  text-white">{items}</ul>
+          <ul className="flex justify-center items-center gap-4 p-4 font-semibold  text-white">{items}</ul>
         </div>
         {/* navbar end div  */}
         <div className="navbar-end">
-          <button onClick={toggleTheme} className="btn btn-ghost rounded-full text-white">
+          <button onClick={toggleTheme} className="btn btn-ghost btn-sm rounded-full text-white !shadow hover:!border-2 hover:!border-white">
             {theme === "dark" ? <FaSun className="text-white" /> : <FaMoon className="text-white" />}
           </button>
           {user ? (
-            <button onClick={signOutUser} className="btn btn-ghost text-white">
+            <p className="mx-2 text-white">
               <UserIcon user={user} />
-            </button>
+            </p>
           ) : (
             <NavLink to="/login" className="btn btn-sm">
               {" "}

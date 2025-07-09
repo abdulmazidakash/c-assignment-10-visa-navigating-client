@@ -6,5 +6,5 @@ html{
 	overflow-y: scroll;
 }
 a.active {
-  @apply  !text-black !bg-white;
+  @apply   border-2 border-white p-2 rounded-lg;
 }
