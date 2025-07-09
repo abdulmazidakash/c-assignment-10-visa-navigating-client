@@ -119,7 +119,7 @@ const MyAddedVisasTable = ({ item, fetchData }) => {
 
         <td className="flex flex-wrap gap-2">
           <button
-            className="btn btn-sm !bg-orange-500 !text-white"
+            className="btn btn-sm !bg-orange-500 !text-white border-none"
             onClick={() => setShowModal(true)}
           >
             <FaEdit />

@@ -65,9 +65,9 @@ const MyVisaApplications = () => {
   };
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto my-8">
       {/* Title */}
-      <h1 className="text-2xl font-bold mb-4">My Visa Applications</h1>
+      <h1 className="text-3xl font-bold my-5 text-center text-orange-500">My Visa Applications</h1>
 
       {/* Search Bar */}
       <div className="flex mb-6 gap-2">
@@ -78,7 +78,7 @@ const MyVisaApplications = () => {
           onChange={(e) => setSearchTerm(e.target.value)} 
           className="input input-bordered w-full max-w-xs"
         />
-        <button className="btn btn-primary" onClick={handleSearch}>
+        <button className="btn !bg-orange-500 !text-white" onClick={handleSearch}>
           Search
         </button>
       </div>
