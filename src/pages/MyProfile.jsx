@@ -5,10 +5,10 @@ export default function MyProfile() {
   const { user, signOutUser } = useContext(AuthContext);
 
   return (
-    <div className="min-h-screen flex items-center justify-center">
+    <div className="min-h-screen flex items-center justify-center bg-orange-50">
       <div className="container mx-auto card flex flex-col items-center p-6  rounded-md">
         <div className="mb-6">
-          <h1 className="text-3xl font-semibold  text-center">
+          <h1 className="md:text-3xl text-xl font-bold  text-center text-orange-500">
             Welcome, {user?.displayName || "User Name"}
           </h1>
         </div>

@@ -35,7 +35,8 @@ const MyAddedVisas = () => {
             <table className="table w-full">
               <thead>
                 <tr className="bg-orange-100">
-                  <th>Country</th>
+                  <th>Image</th>
+                  <th>Name</th>
                   <th>Visa Type</th>
                   <th>Processing Time</th>
                   <th>Fee</th>
@@ -44,7 +45,7 @@ const MyAddedVisas = () => {
                   <th>Actions</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody className="">
                 {visas.map((visa) => (
                   <MyAddedVisasTable
                     key={visa._id}

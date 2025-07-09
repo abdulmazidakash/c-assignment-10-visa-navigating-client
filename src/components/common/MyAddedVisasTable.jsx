@@ -3,9 +3,6 @@ import Swal from "sweetalert2";
 import UpdateVisaModal from "../modal/UpdateVisaModal";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 
-// Optional: If using separate utils
-// import { getBadgeColor, getAppMethodColor } from "../utils/badgeColor";
-
 const MyAddedVisasTable = ({ item, fetchData }) => {
   const { _id } = item;
   const [showModal, setShowModal] = useState(false);
@@ -93,7 +90,7 @@ const MyAddedVisasTable = ({ item, fetchData }) => {
 
   return (
     <>
-      <tr className="hover:bg-orange-50">
+      <tr className="hover:bg-orange-100">
         <td>
           <img
             className="w-10 h-10 object-cover rounded-lg border border-gray-400"
@@ -101,10 +98,10 @@ const MyAddedVisasTable = ({ item, fetchData }) => {
             alt={item.country_name}
           />
         </td>
-
+        <td>{item.country_name}</td>
         {/* Visa Type Badge */}
         <td>
-          <span className={`badge ${getBadgeColor(item.visa_type)} capitalize`}>
+          <span className={`badge-sm md:badge ${getBadgeColor(item.visa_type)} capitalize`}>
             {item.visa_type}
           </span>
         </td>

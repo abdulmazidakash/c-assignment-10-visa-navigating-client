@@ -5,3 +5,6 @@
 html{
 	overflow-y: scroll;
 }
+a.active {
+  @apply  text-black;
+}

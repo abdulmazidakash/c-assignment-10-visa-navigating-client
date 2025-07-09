@@ -47,7 +47,7 @@ const AllVisas = () => {
         <select
           value={filter}
           onChange={(e) => setFilter(e.target.value)}
-          className="bg-orange-50 text-black dark:bg-gray-900 dark:text-white px-3 py-2 rounded-lg font-semibold">
+          className="!bg-orange-50 !text-black dark:bg-gray-900 dark:text-white px-3 py-2 rounded-lg font-semibold">
           <option value="All Visas">All Visas</option>
           <option value="Tourist visa">Tourist Visa</option>
           <option value="Student visa">Student Visa</option>

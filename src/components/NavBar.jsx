@@ -1,5 +1,5 @@
 import { useContext, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { FaSun, FaMoon } from "react-icons/fa";
 import { FaPassport } from "react-icons/fa6";
 import { AuthContext } from "../providers/AuthProvider";
@@ -17,52 +17,63 @@ const NavBar = () => {
     const newTheme = theme === "dark" ? "light" : "dark";
     setTheme(newTheme);
   };
-
   const items = [
-    <li
-      key="home"
-      className={` font-medium ${
-        theme === "dark" ? "text-white" : "text-white"
-      }`}>
-      <Link to="/">Home</Link>
-    </li>,
-    <li
-      key="allvisas"
-      className={` font-medium ${
-        theme === "dark" ? "text-white" : "text-white"
-      }`}>
-      <Link to="/allvisas">All Visas</Link>
-    </li>,
+          <li>
+            <NavLink
+              to={"/"}
+              className=""
+            >
+              {" "}
+              Home
+            </NavLink>
+          </li>,
+          <li>
+            <NavLink
+              to={"/allvisas"}
+              className=""
+            >
+              {" "}
+              All Visas
+            </NavLink>
+          </li>,
 
-    <li
-      key="addVisa"
-      className={` font-medium ${
-        theme === "dark" ? "text-white" : "text-white"
-      }`}>
-      <Link to="/addVisa">Add Visa</Link>
-    </li>,
-    <li
-      key="myAddedVisa"
-      className={` font-medium ${
-        theme === "dark" ? "text-white" : "text-white"
-      }`}>
-      <Link to="/myAddedVisa">My Added Visa</Link>
-    </li>,
-    <li
-      key="myVisaApplication"
-      className={` font-medium ${
-        theme === "dark" ? "text-white" : "text-white"
-      }`}>
-      <Link to="/myVisaApplication">My Visa Application</Link>
-    </li>,
-    user && (
-      <li
-        key="profilePage"
-        className={` font-medium ${
-          theme === "dark" ? "text-white" : "text-white"
-        }`}>
-        <Link to="/profilePage">Profile</Link>
-      </li>
+          <li>
+            <NavLink
+              to={"/addVisa"}
+              className=""
+            >
+              {" "}
+              Add Visa
+            </NavLink>
+          </li>,
+          <li>
+            <NavLink
+              to={"/myAddedVisa"}
+              className=""
+            >
+              {" "}
+              My Added Visa
+            </NavLink>
+          </li>,
+          <li>
+            <NavLink
+              to={"/myVisaApplication"}
+              className=""
+            >
+              {" "}
+              My Visa Application
+            </NavLink>
+          </li>,
+        user && (
+          <li>
+            <NavLink
+              to={"/profilePage"}
+              className=""
+            >
+              {" "}
+              Profile
+            </NavLink>
+          </li>
     ),
   ];
 
@@ -89,7 +100,7 @@ const NavBar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-bgPrimary rounded-box z-[999] mt-3 w-52 p-2 shadow">
+              className="menu menu-sm dropdown-content bg-bgPrimary rounded-box z-[999] mt-3 w-52 p-2 shadow font-semibold">
               {items}
             </ul>
           </div>
@@ -104,7 +115,7 @@ const NavBar = () => {
         </div>
         {/* navbar center menu div  */}
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">{items}</ul>
+          <ul className="menu menu-horizontal px-1 font-semibold  text-white">{items}</ul>
         </div>
         {/* navbar end div  */}
         <div className="navbar-end">
