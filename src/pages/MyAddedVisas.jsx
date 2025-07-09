@@ -34,7 +34,7 @@ const MyAddedVisas = () => {
           <div className="overflow-x-auto border border-gray-200 bg-orange-50 rounded-lg">
             <table className="table w-full">
               <thead>
-                <tr className="bg-orange-100">
+                <tr className="bg-orange-500 text-white">
                   <th>Image</th>
                   <th>Name</th>
                   <th>Visa Type</th>

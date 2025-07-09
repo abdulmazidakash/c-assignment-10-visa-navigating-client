@@ -6,5 +6,5 @@ html{
 	overflow-y: scroll;
 }
 a.active {
-  @apply  text-black;
+  @apply  !text-black !bg-white;
 }

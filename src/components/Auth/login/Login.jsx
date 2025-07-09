@@ -49,8 +49,16 @@ export default function Login() {
 
   const handleGoogleSignIn = async () => {
     try {
-      await googleSignIn(nextPath);
-      Swal.fire('Success!', 'Signed in with Google', 'success');
+      const user = await googleSignIn();
+
+      if(!user){
+        throw new Error('Google Sign-In failed. Please try again.');
+      }
+      Swal.fire(
+        'Google Login Successful!',  
+        `Welcome, ${user.displayName || "User"}`, 
+        'success'
+      );
       navigate(nextPath);
     } catch (error) {
       console.error('Google Signin error: ', error);

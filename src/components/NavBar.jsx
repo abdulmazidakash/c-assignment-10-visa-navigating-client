@@ -79,7 +79,7 @@ const NavBar = () => {
 
   return (
     <div>
-      <div className="navbar bg-bgPrimary shadow p-3">
+      <div className="navbar bg-orange-500 shadow p-3">
         {/* small device navbar  */}
         <div className="block md:hidden">
           <div className="dropdown lg:hidden">
@@ -100,7 +100,7 @@ const NavBar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-bgPrimary rounded-box z-[999] mt-3 w-52 p-2 shadow font-semibold">
+              className="menu menu-sm dropdown-content bg-orange-500 text-white rounded-box z-[999] mt-3 w-52 p-2 shadow font-semibold">
               {items}
             </ul>
           </div>
@@ -127,9 +127,10 @@ const NavBar = () => {
               <UserIcon user={user} />
             </button>
           ) : (
-            <Link to="/login" className="btn text-white">
+            <NavLink to="/login" className="btn btn-sm">
+              {" "}
               Login
-            </Link>
+            </NavLink>
           )}
         </div>
       </div>

@@ -15,10 +15,12 @@ import Swal from "sweetalert2";
 export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
+
   const [loading, setLoading] = useState(true);
   const auth = getAuth(app);
   const [user, setUser] = useState(null);
   const googleProvider = new GoogleAuthProvider();
+
 
   // Listen for authentication state to change.
   useEffect(() => {
@@ -52,27 +54,23 @@ const AuthProvider = ({ children }) => {
     });
   };
 
-  //function to sign in with Google
-  const googleSignIn = (way) => {
-    setLoading(true);
-    signInWithPopup(auth, googleProvider)
-      .then((result) => {
-        setUser(result.user);
-        setLoading(false);
-        console.log("way ");
-        window.location.href = way;
-        // swall message for successfull modal
-        Swal.fire({
-          icon: "success",
-          title: "Login Successfull",
-          text: "Welcome to the website",
-        });
-      })
-      .catch((error) => {
-        console.error(error);
-        setLoading(false);
-      });
-  };
+//google sign in function
+const googleSignIn = async () => {
+  setLoading(true);
+  try {
+    const result = await signInWithPopup(auth, googleProvider);
+    // console.log('auth provider google sign in-------->',result.user);
+    setUser(result.user);
+
+    return result.user;
+  } catch (error) {
+    console.error("Google Sign-In Error:", error);
+    throw error;
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   //for logout function
   const signOutUser = () => {
